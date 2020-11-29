@@ -153,7 +153,7 @@ def listar_noticia(request):
             Q(titulo__icontains = queruset)
         ).distinct()
     
-    paginator = Paginator(post,1)
+    paginator = Paginator(post,10)
     page = request.GET.get('page')
     post = paginator.get_page(page)
 
