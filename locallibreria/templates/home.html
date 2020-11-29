@@ -1,0 +1,63 @@
+{% extends "base_generic.html" %}
+{% load static %}
+{% block content %}
+
+
+<section>
+  <div class="home container col-12">
+    <div class=" border border-primary home-contenido container bg-color1">
+      <div class="row py-3 justify-content-center" style="height: 100%;">
+        
+        {% if user.is_authenticated %}
+        <div class="text-center pt-5 pb-5">
+          <h1 class="color">Bienvenido</h1>
+          <h1 class="color">{{ user.username }}</h1>
+        </div>
+        <div class="container col-12 pb-5 align-self-end justify-content-center">
+          <div class="row justify-content-center">
+            <i class="color3 fas fa-file-alt align-self-center" style="font-size: 30px;"></i> 
+            <a href="{% url 'listar_noticia' %}" class="rounded-pill col-6 btn btn-outline-success" role="button">Administrar Noticias</a>
+          </div>
+          <div class="row justify-content-center">
+            <i class="color3 fas fa-star-half-alt align-self-center" style="font-size: 30px;"></i> 
+            <a href="{% url 'listar_analisis' %}" class="rounded-pill col-6 btn btn-outline-success" role="button">Administrar Analisis </a>
+          </div>
+          <div class="row justify-content-center">
+            <i class="color3 fas fa-user-friends align-self-center" style="font-size: 30px;"></i> 
+            <a href="{% url 'listar_foro' %}" class="rounded-pill col-6 btn btn-outline-success" role="button">Mis Foros</a>
+          </div>
+          <div class="row justify-content-center">
+            <i class="color3 fas fa-unlock-alt align-self-center" style="font-size: 30px;"></i> 
+            <a href="{% url 'password_reset' %}" class="rounded-pill col-6 btn btn btn-outline-primary" role="button">Cambiar Contraseña</a>
+          </div>
+          <div class="row justify-content-center">
+            <i class="color3 fas fa-times align-self-center" style="font-size: 30px;"></i> 
+            <a href="{% url 'logout' %}" class="rounded-pill col-6 btn btn-outline-danger " role="button">Cerrar Sesion</a>
+          </div>
+        </div>
+        {% else %}
+        <div class="text-center pt-5 pb-5">
+          <h1 class="color">Bienvenido</h1>
+          <h1 class="color">{{ user.username }}</h1>
+        </div>
+        <div class="row col-12 pb-5 align-self-end justify-content-center">
+          <a href="{% url 'login' %}" class=" col-6 rounded-pill btn btn-outline-primary" role="button">Iniciar Sesion</a>
+          <a href="{% url 'signup' %}" class="col-6 rounded-pill btn btn-outline-success" role="button">Crear Cuenta</a>
+        </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</section>  
+
+{% endblock %}
+{% block carrusel %} 
+{% endblock %}
+{% block cajaComentarios %} 
+{% endblock %}
+{% block noticias %}
+{% endblock %}   
+{% block analisisdejuegos %} 
+{% endblock %}
+{% block footer %} 
+{% endblock %}

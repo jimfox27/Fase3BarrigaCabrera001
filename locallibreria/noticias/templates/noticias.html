@@ -1,0 +1,70 @@
+{% extends "base_generic.html" %}
+{% load static %}
+{% block content %}
+<body class="bg-color1">
+  
+</body>
+<header >
+  <div class="image-center">
+    <div class="portada">
+      <img src="{% static 'img/Fondo.png' %}" class="img-fluid" alt="portada">
+    </div>
+    <div class="titulo-noticias">
+      <h1 class="color ">NOTICIAS</h1>
+    </div>
+  </div>
+</header>
+
+<section> <!-- Cuerpo de la noticia  -->
+  <div class="container py-3 col-12 bg-color1">
+    <div class="container">
+      <div class="container p-0 col-10">
+        <h2 class="color">Ultima Noticia</h2>
+
+        {% for post in ultimaNoticia %}
+          <div class="row py-3">
+            <div class="col-12 noticia-img">
+                <a href="{% url 'detalle_post' post.slug %}" target="_self">
+                    <div class="noticia-destacada">
+                        <img src="{% url 'detalle_post' post.slug %}" class="img-fluid" alt="portada">
+                        {% if post.imagen %}
+                        <img src="{{ post.imagen.url }}" alt="Noticia 1">
+                        {% endif %}
+                        <div class="capaNoticia"></div>
+                    </div>
+                    <div class="capaNoticia"></div>
+                    <div class="center">
+                      <h2 class="color">{{ post.nombrejuego|linebreaksbr }}</h2>
+                    </div>
+                </a>
+            </div>
+            <a class="container col bg-color2" href="{% url 'detalle_post' post.slug %}">
+              <h2 class="color3 text-center">{{ post.titulo }}</h2>
+              <div class="row noticia justify-content-center">
+                <div class="color2 col-12 align-self-start" style="font-size: 20px;">
+                    <p class="color2" >{{ post.contenido| slice:200 | safe   }}</p>
+                </div>
+                <div class="row col-12 align-self-end justify-content-end">
+                      <h6 class="color3 text-right"><i class="far fa-clock"></i> {{ post.fecha_publicacion}}</h6>
+                </div>
+              </div>
+            </a>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endblock %}
+
+
+{% block analisisdejuegos %}
+{% endblock %}
+
+{% block carrusel %} 
+{% endblock %}
+
+{% block cajaComentarios %} 
+{% endblock %}
+

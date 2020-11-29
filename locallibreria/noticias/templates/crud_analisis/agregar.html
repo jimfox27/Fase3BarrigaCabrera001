@@ -1,0 +1,75 @@
+{% extends 'base_generic.html' %}
+
+{% block content %}
+
+<section>
+    <div class="home container p-5 col-12">
+        <div class=" border border-primary home-contenido container bg-color1">
+            <div class="row py-3 align-self-center justify-content-center" style="min-height: 100%;">
+                <div class="align-self-start text-center col-12 pt-3 pb-3">
+                    <h1 class="color">Crear Analisis</h1>
+                </div>
+
+                {% if mensaje == "Guardado Con Exito" %}
+                <div class="col py-3 my-5 color2" style="background-color: rgb(243, 245, 149);">
+                    <h1 class="text-center"><i class="far fa-save"></i> Guardado Con Exito</h1>
+                </div>
+                {% endif %}
+                <div class="modal p-0 m-0 fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+                    <div class="py-3" style="background-color: rgb(245, 149, 149); color: brown; width: 100%;">
+                        <h1 class="text-center"><i class="fas fa-times"></i> ERROR</h1>
+                    </div>
+                    <div class="modal-dialog modal-sm">
+                    </div>
+                </div>
+
+                <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+                        <div class="col py-3 my-5" style="background-color: rgb(245, 149, 149); color: brown;">
+                            <h1 class="text-center"><i class="fas fa-times"></i> ERROR</h1>
+                        </div>
+                </div>
+
+                <form action="" method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="container formulario col-6 text-center">
+                        {{ form.nombrejuego.label_tag }}
+                        {{ form.nombrejuego }}
+                        {{ form.puntuacion.label_tag }}
+                        {{ form.puntuacion }}
+                        {{ form.autor.label_tag }}
+                        {{ form.autor }}
+                        {{ form.genero.label_tag }}
+                        {{ form.genero }}
+                    </div>
+                    
+                    <div class=" container formulario col-12 justify-content-center text-center">
+                        {{ form.contenido.label_tag }}
+                        {{ form.contenido }}
+                    </div>
+                    
+                    <div class="container col-6 py-3 formulario text-center">
+                        {{ form.imagen.label_tag }}
+                        {{ form.imagen }}
+                    </div>                 
+                    <div class="col-12 align-self-end py-5 text-center">
+                        <button class=" rounded-pill col-6 btn btn-outline-primary" type="submit" data-toggle="modal" data-target=".bd-example-modal-sm">Crear</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}
+
+{% block carrusel %} 
+{% endblock %}
+{% block cajaComentarios %} 
+{% endblock %}
+{% block noticias %}
+{% endblock %}   
+{% block analisisdejuegos %} 
+{% endblock %}
+
+{% block footer %}
+{% endblock %}

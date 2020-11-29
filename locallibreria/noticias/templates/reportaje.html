@@ -1,0 +1,43 @@
+{% extends "base_generic.html" %}
+{% load static %}
+{% block content %}      
+
+<header>
+    <div class="container reportaje col-12 bg-color2">
+      <div class="container col-12 col-sm-10 col-md-9 col-lg-8 col-xl-7 d-block">
+        <div class="image-center">
+          <div class="portada">
+            {% if detalle_post.imagen %}
+              <img src="{{ detalle_post.imagen.url }}"  class="img-fluid" alt="portada">
+            {% endif %}
+          </div>
+          <div class="center">
+            <h2 class="color">{{ detalle_post.nombrejuego }}</h2>
+          </div>
+        </div>
+      </div>
+    </div>
+</header>
+  
+<section> <!-- Cuerpo de la noticia  -->
+    <div class="container col-12 bg-color2">
+      <div class="container col-12 col-sm-10 col-md-9 col-lg-8 col-xl-7 d-block">
+        <div class="texto-encima pb-1 px-1 pb-sm-5 px-sm-5 ">
+          <h6 class="color text-right mx-2 pt-2 "><i class="far fa-clock color3"></i> {{ detalle_post.fecha_publicacion }}</h6>
+          <h2 class="color3 text-center py-3"  >{{ detalle_post.titulo }}</h2>
+          <div class="color2">{{ detalle_post.contenido | safe }}</div>
+        </div>
+      </div>
+    </div>
+</section>
+
+{% endblock %}
+
+{% block analisis %}
+{% endblock %}
+
+{% block cajaComentarios %}
+{% endblock %}
+
+{% block analisisdejuegos %} 
+{% endblock %}

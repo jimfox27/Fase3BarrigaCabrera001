@@ -1,0 +1,31 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+{% load static %}
+
+<body background="{% static 'img/wallhaven.png' %}" style="background-color: black;">
+
+
+<div class="container  col-6" style="padding-top: 150px;">
+ 
+<form action="" method="POST" style="text-align: center;">
+    {% csrf_token %}
+    <h1 class="color">Delete User</h1>
+    <h2 class="color2">Quieres borrar al usuario: {{ user }} ?</h2>
+    <button class="btn btn-success" type="submit" value="Confirm">Eliminar</button>
+</form>
+</div>
+</body>
+
+
+{% endblock %}
+{% block carrusel %} 
+{% endblock %}
+{% block cajaComentarios %} 
+{% endblock %}
+{% block noticias %}
+{% endblock %}   
+{% block analisisdejuegos %} 
+{% endblock %}
+{% block footer %}
+{% endblock %}

@@ -1,0 +1,54 @@
+{% extends "base_generic.html" %}
+{% load static %}
+{% block content %}
+
+
+<body background="{% static 'img/wallhaven.png' %}" style="background-color: black;">
+
+    <div class="container col-6" style="padding-top: 100px;" >
+        <form action="" method="POST" style="text-align: center;">
+            {% csrf_token %}
+            <div class="form-group2 " >
+              <h1 class="color">Crear Usuario</h1>
+              <p class="color2">Comparte con nosotros, es gratis y de fácil uso.
+                Podrás comentar y crear discusiones junto a la comunidad de Game Bros, te esperamos.</p>
+              <ul class="">
+                <li>
+                  <label class="color col-12">Nombre:</label>
+                  <h3 class="form_usuario">{{ form.usuario }}</h3>
+                </li>
+                <li>
+                  <label class="color col-12">Apellido:</label>
+                  <h3 class="form_usuario">{{ form.apellido }}</h3>
+                </li>
+                <li>
+                    <label class="color col-12">Telefono:</label>
+                    <h3 class="form_usuario">{{ form.telefono }}</h3>
+                </li>
+                <li>
+                    <label class="color col-12">Fecha de Nacimiento:</label>
+                    <h3 class="form_usuario">{{ form.nacimiento }}</h3>
+                </li>
+                <li>
+                    <label class="color col-12">Direccion:</label>
+                    <h3 class="form_usuario">{{ form.direccion }}</h3>
+                </li>
+                <button class="btn btn-success" type="submit" value="Sumbit">Crear Usuario</button>
+              </ul>
+              
+            </div>
+        </form>
+    </div>
+</body>
+
+{% endblock %}
+{% block carrusel %} 
+{% endblock %}
+{% block cajaComentarios %} 
+{% endblock %}
+{% block noticias %}
+{% endblock %}   
+{% block analisisdejuegos %} 
+{% endblock %}
+{% block footer %}
+{% endblock %}

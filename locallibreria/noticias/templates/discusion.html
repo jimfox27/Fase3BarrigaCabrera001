@@ -1,0 +1,88 @@
+{% extends "base_generic.html" %}
+{% load static %}
+{% block content %}
+
+<header >
+  <div class="image-center">
+    <div class="portada">
+      <img src="{% static 'img/Fondo.png' %}" class="img-fluid" alt="portada">
+    </div>
+    <div class="titulo-noticias">
+      <h1 class="color ">FORO</h1>
+    </div>
+  </div>
+</header>
+
+<section>
+  <div class="container py-3 col-12 bg-color2">
+    <div class="container">
+      <div class="container p-2 col-10 bg-color1 text-center" style="border-radius: 100px;">
+        <i class="fas fa-smile-beam" style="font-size: 40px;"></i>
+        <h3 class="color">{{ foro_post.tema }}</h3>
+      </div>
+      <div class="container p-2 my-3 col-10 bg-color1 rounded">
+        <div class="mx-2">
+          <div class="row d-flex">
+
+            <div class="px-2">
+              <img src="{{ foro_post.user.perfil.image.url }}" class="rounded-circle" style="width: 100px; height: 100px; " alt="fotoDePerfil">
+            </div>
+            <div class="">
+              <div class="color">{{ foro_post.user }}</div>
+              <div class="color3">{{ foro_post.fecha_publicacion }}</div>
+            </div>
+            <div class="ml-auto px-5">
+              <a href="{% url 'agregar_comentario' %}" class="btn btn-outline-primary col" role="button">  Comentar   </a>
+            </div>
+          </div>
+
+          <hr class="row col-12" style="border-color: red;">
+          <div class="color2 py-2 col-12">{{ foro_post.contenido | safe}}</div>
+        </div>
+      </div>
+      <!--  Caja de comentarios  -->
+      {% if not foro_post.comentario.all %}
+      <div class="container p-2 my-3 col-10 bg-color1 rounded">
+        <div class="row mx-2">
+          <div class="row pl-5 justify-content-start">
+            <h3>No hay respuestas...</h3>
+          </div>
+        </div>
+      </div>
+      {% else%}
+          {% for comentario in foro_post.comentario.all %}
+          <div class="container p-2 my-3 col-10 bg-color1 rounded">
+            <div class="mx-2">
+              <div class="row d-flex">
+    
+                <div class="px-2">
+                  <img src="{{ foro_post.user.perfil.image.url }}" class="rounded-circle" style="width: 100px; height: 100px; " alt="fotoDePerfil">
+                </div>
+                <div class="">
+                  <div class="color">{{ comentario.name }}</div>
+                  <div class="color3">{{ comentario.fecha_publicacion }}</div>
+                </div>
+              </div>
+    
+              <hr class="row col-12" style="border-color: red;">
+              <div class="color2 py-2 col-12">{{ comentario.body | safe }}</div>
+            </div>
+          </div>
+          {% endfor %}
+
+      {% endif %}
+    </div>
+  </div>
+</section>
+
+{% endblock %}
+
+{% block noticias %}
+{% endblock %}
+{% block analisisdejuegos %}
+{% endblock %}
+{% block carrusel %} 
+{% endblock %}
+{% block cajaComentarios %} 
+{% endblock %}
+      

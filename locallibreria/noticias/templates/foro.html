@@ -1,0 +1,116 @@
+{% extends "base_generic.html" %}
+{% load static %}
+{% block content %}
+
+<header >
+  <div class="image-center">
+    <div class="portada">
+      <img src="{% static 'img/Fondo.png' %}" class="img-fluid" alt="portada">
+    </div>
+    <div class="titulo-noticias">
+      <h1 class="color ">FORO</h1>
+    </div>
+  </div>
+</header>
+
+<section>
+  <div class="container col-12 bg-color2">
+    <div class=" container col-12 col-sm-10">
+      <div class="container col-12 col-sm-12 col-md-9 col-lg-8 col-xl-7 d-block">
+        <div class="row ">
+          {% if user.is_authenticated %}
+            <a href="{% url 'listar_foro' %}" class="btn btn-outline-primary col" role="button">  Mis Temas      </a>
+            <a href="{% url 'agregar_foro' %}" class="btn btn-outline-success col" role="button">  Crear un Tema   </a>
+          {% else %}
+            <a href="{% url 'login' %}"  class="btn btn-outline-danger col" role="button"> Iniciar sesion  </a> 
+          {% endif %}
+
+        </div>
+        <div class="row ">
+            <div class="col-md-12 py-3 search">
+              <form method="get">
+                <div id="custom-search-input">
+                  <div class="input-group col-md-12">
+                    <input type="text" class="form-control" placeholder="Buscar en el foro" name="buscar">
+                    <span class="input-group-list">
+                      
+                      <button type="submit" class=" my-0 btn btn-outline-primary"><i class="fas fa-search"></i> Buscar</button>
+                    </span>
+                  </div>
+                </div>
+              </form>
+            </div>
+        </div>
+        <div class="row justify-content-between">
+          <div class="col-12">
+            <div class="border-foro bg-color2 text-center">
+              <h1 style="color: #00FFB1;">Discusión General</h1>
+            </div>
+            <table class="table table-hover table-dark">
+              <tbody class="color2">
+                {% for foro in ultimoForo %}
+                <tr class="bg-color2 text-center">
+                  <th scope="row"><i class="fas fa-comments" style="font-size: 50px;"></i></th>
+                  <td>
+                    <a href="{% url 'foro_post' foro.slug %}">
+                    <div>
+                        <H4 class="color">
+                          {{ foro.tema}}
+                        </H4>
+                      </div>
+                      <div>
+                        <H8 class="color2">
+                          {{ foro.fecha_publicacion}}
+                        </H8>
+                      </div>
+                    </a>
+                    </td>
+                    <td>Mensajes</td>
+                  </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+
+            <ul class="pagination justify-content-center" style="margin:20px 0">
+              {% if ultimoForo.has_previous %}
+              <li class="page-item">
+                <a class="btn btn-outline-danger" href="?page={{ ultimoForo.previous_page_number }}{% if request.GET.buscar %}&buscar={{ request.GET.buscar }}{% endif %}">Anterior</a>
+              </li>
+              {% endif %}
+
+              {% for i in ultimoForo.paginator.page_range %}
+                {% if ultimoForo.number == i %}
+                <li class="page-item">
+                  <a class="btn btn-primary col">{{ i }}</a>
+                </li>
+                {% else %}
+                <li class="page-item">
+                  <a class="btn btn-outline-primary col" href="?page={{ i }}{% if request.GET.buscar %}&buscar={{ request.GET.buscar }}{% endif %}">{{ i }}</a>
+                </li>
+                {% endif %}
+              {% endfor %}
+
+              {% if ultimoForo.has_next %}
+              <li class="page-item">
+                <a class="btn btn-outline-success col" href="?page={{ ultimoForo.next_page_number }}{% if request.GET.buscar %}&buscar={{ request.GET.buscar }}{% endif %}">Siguiente</a>
+              </li>
+              {% endif %}
+            </ul>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}
+
+{% block noticias %}
+{% endblock %}
+{% block analisisdejuegos %}
+{% endblock %}
+{% block carrusel %} 
+{% endblock %}
+{% block cajaComentarios %} 
+{% endblock %}
+      

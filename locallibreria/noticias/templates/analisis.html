@@ -1,0 +1,85 @@
+{% extends "base_generic.html" %}
+{% load static %}
+{% block content %}
+
+<header >
+  <div class="image-center">
+    <div class="portada">
+      <img src="{% static 'img/Fondo.png' %}" class="img-fluid" alt="portada">
+    </div>
+    <div class="titulo-noticias">
+      <h1 class="color ">ANALISIS</h1>
+    </div>
+  </div>
+</header>
+
+<section>
+  <div class="container py-3 col-12 bg-color2">
+    <div class="container">
+      <div class="container p-0 col-10">
+        <h2 class="color">Ultimo Análisis</h2>
+
+        {% for analisis in ultimoAnalisis %}
+        <div class="row py-3">
+          <div class="col-12 noticia-img">
+            <a href="{% url 'analisis_post' analisis.slug %}" target="_self">
+              <div class="noticia-destacada">
+                <img src="{{ analisis.imagen.url }}" class="img-fluid" alt="portada">
+              </div>
+              <!-- puntuacion -->
+              <div class="puntoDestacado">
+                <div class="circleBar">
+                  <div class="container ">
+                    <div class="row align-items-center">
+                      <div class="col">
+                        <div
+                        class="round"
+                        data-value="{{ analisis.puntuacion }}"
+                        data-size="150"
+                        data-thickness="20"
+                        >
+                        <strong class="punto"></strong>
+                        </div>
+                      </div> 
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="capaNoticia"></div>
+              <div class="center">
+                <h2 class="color">{{ analisis.nombrejuego}}</h2>
+              </div>
+            </a>
+          </div>
+          <a class="container col bg-color1" href="{% url 'analisis_post' analisis.slug %}">
+            <div class="row noticia">
+              <div class="color2 col-12 align-self-start" style="font-size: 20px;">
+                <p>{{ analisis.contenido| slice:300 | safe  }} </p>
+              </div>
+              <div class="row col-12 align-self-end justify-content-end">
+                <h6 class="color3 text-right"><i class="far fa-clock"></i></h6>
+                <h6 class="color text-right mx-2">{{ analisis.fecha_publicacion}}</h6>
+              </div>
+
+            </div>
+          </a>
+        </div>
+        {% endfor %}
+
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endblock %}
+
+
+{% block noticias %}
+{% endblock %}
+
+{% block carrusel %} 
+{% endblock %}
+
+{% block cajaComentarios %} 
+{% endblock %}
+

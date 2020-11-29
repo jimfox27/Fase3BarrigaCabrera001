@@ -1,0 +1,581 @@
+@font-face{
+    font-family: "Mifuente";
+    src: url('../fonts/Typo_Round_Regular_Demo.otf');
+}
+*{
+    color: #FF6F00
+}
+/*----------                INDEX               --------*/
+/*---                      colores               ---*/
+.color{     color: #00FFB1              ;}
+.color2{    color: #FF6F00              ;}
+.color3{    color: #00CBFF              ;}
+.color4{    color: #001527              ;}
+.bg-color1{ background-color: #001527   ;}
+.bg-color2{ background-color: #000911   ;}
+
+#color-link{
+    color: #00FFB1;
+    font-family: "Mifuente";
+}
+
+/*-----------               header               ----------*/
+#border{
+    background-color: #050011;
+    border-color: #00FFB1;
+    border-width: 9px;
+    border-style: solid;
+    border-radius: 10rem;
+    margin-top: 1rem;
+    padding: 27px;
+}
+
+.navbar-brand:hover{
+    background-color: transparent;
+}
+
+.header{   
+    position: relative;
+    height: calc(90vw * 0.56);      /*  calculo del alto con trlacion al video (alto / ancho)   */
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.header-contenedor{
+    font-family: "Mifuente";
+    position: relative;
+    color: #00f8ae;
+    top: 50%;
+    text-align: center;
+}
+
+/*------------               Video               ----------*/
+.video-container{
+    position: absolute;
+    z-index: -100;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: calc(100vw * 0.5626);
+    overflow: hidden;
+}
+
+.video-container video{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+}
+
+/*------------               Hamburguesa               ----------*/
+.custom-toggler.navbar-toggler {
+    border-color: transparent;
+    color: #00FFB1;   
+}
+
+/*----------               Calendario               --------*/
+
+.container-box{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 1100px;
+    margin: auto;
+}
+
+.box{
+    position: relative;
+    overflow: hidden;
+}
+
+.box img{
+    width: 100%;
+    height: 100%;
+    padding: 2px;
+}
+
+.capa{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.0);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: rgba(0, 0, 0, 0);
+    transition: .3s ease;
+}
+
+.box:hover .capa{
+    color: #fff;
+    background: rgba(0, 0, 0, 0.7);
+}
+.capa h2{
+    font-size:1.8vw;
+}
+
+
+@media (max-width: 576px) {
+    .capa h2{
+        font-size:8vw;
+    }
+}
+@media (max-width: 767px) {
+    .capa h2{
+        font-size:4vw;
+    }
+}
+
+@media (max-width: 1000px) {
+    .capa h2{
+        font-size:2.5vw;
+    }
+}
+
+/*----------    *Calendario* Carrusel     --------*/
+.carousel-item {
+    padding-left: 100px;
+    padding-right: 100px;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+@media (max-width: 500px) {
+    .carousel-item {
+        padding-left: 50px;
+        padding-right: 50px;
+    }
+}
+
+#carouselExampleControls{
+    margin-left: 16%;
+    margin-right: 16%;
+}
+
+@media (max-width: 1200px) {
+    #carouselExampleControls{
+        margin-left: 0%;
+        margin-right: 0%;
+    }
+}
+
+#control{
+    background-color: transparent;
+}
+
+/*---------- Calendario --------*/
+/*---------- botones --------*/
+.btn{
+    margin: 10px;
+}
+
+/*---------- Noticias --------*/
+
+.noticia-img{
+    min-width: 250px;
+    min-height: 250px;
+    padding: 0px;
+    background-color: #2e0a57;
+    transition: .3s ease;
+}
+.capaNoticia
+{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: rgba(0, 0, 0, 0);
+    transition: .3s ease;
+}
+.capaNoticia:hover{
+    background: rgba(0, 0, 0, 0.7);
+}
+
+.noticia-img img{
+    width: 100%;
+    height: 100%;
+}
+
+.contenedornoticias{
+    padding-top: 10px;
+}
+
+.noticia{
+    min-height: 180px;
+}
+
+.contenido{
+    max-height: 150px;
+    overflow: hidden;
+}
+
+@media (max-width: 500px) {
+    .noticia-img{
+        min-width: auto;
+        padding: 0px;
+    }
+}
+/*---------- ANALISIS --------*/
+/*----------  puntos --------*/
+.circleBar .round strong {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 90%;
+    font-size: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #00eaff;
+}
+
+/*---------- contenido --------*/
+
+.analisis{
+    min-height: 150px;
+    border-radius: 100px;
+    
+}
+.analisis p{
+    padding: 0;
+    margin: 0;
+    max-height: 60px;
+    overflow: hidden;
+}
+
+.rounded-circle{
+    max-height: 160px;
+}
+
+a:hover {
+    background-color: #13262e;
+    text-decoration: none;
+}
+
+#logo:hover{
+    background-color: transparent;
+}
+
+/*----------               REPORTAJE               --------*/
+.reportaje{
+    padding-top: 120px;
+}
+
+.image-center{
+    position: relative;
+    width: 100%;
+    height: 300px;
+}
+
+.portada{
+    width: 100%;
+    height: 100%;
+    top: 0;
+}
+
+.portada img{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit:cover;
+}
+
+.center {
+    position: absolute;
+    text-align: center;
+    width: 100%;
+    bottom: 0;
+    background-color: #001222c9;
+}
+.puntoDestacado {
+    position: absolute;
+    text-align: center;
+    width: 100%;
+    bottom: 30%;
+}
+
+.video{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.galeria{
+    position: relative;
+    width: 200px;
+    height: 200px;
+    margin: 5px;
+    background-color: #FF6F00;
+}
+
+.galeria img{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit:cover;
+}
+
+.galeria:hover img{
+    -webkit-filter: brightness(50%);
+    filter: brightness(50%);
+}
+
+/*----------               NOTICIAS               --------*/
+.titulo-noticias{
+    position: absolute;
+    text-align: center;
+    width: 100%;
+    top: 50%;
+}
+
+
+.titulo-noticias h1{
+    position: absolute;
+    text-align: center;
+    width: 100%;
+    top: 50%;
+    font-size: 5vw;
+    font-family: "Mifuente";
+}
+
+.galeria{
+    position: relative;
+    width: 200px;
+    height: 200px;
+    margin: 5px;
+    background-color: #FF6F00;
+}
+
+.noticia-destacada{
+    width: 100%;
+    height: 100%;
+    top: 0;
+}
+
+.noticia-destacada img{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit:cover;
+}
+
+/*----------- Formulario -------------*/
+
+div.vertical-line{
+    width: 1px; 
+    background-color: white; 
+    height: 50%; 
+    float: right;
+}
+
+.form-control{
+    width: 80%;
+}
+
+@media (max-width: 750px) {
+    .form-control{
+    width: 95%;
+}
+}
+
+.formularios{
+    padding-top: 1000px;
+}
+
+button{
+    width: auto;
+}
+
+.contenedor{
+    width: 500px;
+    margin: 0 auto;
+    padding-top: 0px;
+}
+
+#contenedor-imagen img{             /* pac man */
+    transform: scaleX(-1);
+}
+
+#contenedor-imagen img:hover {      /* pac man */
+    position: relative;
+    transition: 1s ease;
+    transform: rotate(-360deg);
+}
+
+label{
+    color: white;
+}
+
+/* pagina Juego */
+
+.media-heading{
+    color: #FF6F00;
+}
+
+.media-body p{
+    color: rgb(0, 0, 0);
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 30px;
+}
+
+/*-------- Foro ------------*/
+.foro-parrafo{
+    font-size:1.5vw
+}
+
+@media (max-width: 700px) {
+    .foro-parrafo{
+        font-size:2.2vw;
+        margin: 0;
+    }
+}
+
+.like{
+    color: #00CBFF;
+    font-size: 2vw;
+}
+
+/*--------------- login --------------------*/
+
+.home {
+    height: 100%;
+}
+
+.home-contenido {
+    margin-top: 150px;
+    min-height: 700px;
+    margin-bottom: 100px;
+}
+
+
+/*--------------- Formulario --------------------*/
+
+.formulario label{
+    color: #FF6F00;
+
+}
+
+.formulario input{
+    width: 100%;
+    text-align: center;
+    align-items: center;
+    padding: 0px;
+    margin: 0px;
+    border-radius: 100px;
+    outline: none;
+    border-color: #00ffff;
+    background-color: #000000;
+    color: #00ffbf;
+}
+
+.formulario input:out-of-range{
+    width: 100%;
+    text-align: center;
+    align-items: center;
+    padding: 0px;
+    margin: 0px;
+    border-radius: 100px;
+    outline: none;
+    border-color: #00ffff;
+    background-color: #000000;
+    color: #00ffbf;
+}
+
+.formulario ul{
+    padding: 0;
+    border-style: solid;
+    list-style: none;
+    color: #FF6F00;
+    width: 100%;
+}
+
+.formulario select{
+    padding: 0;
+    border-style: solid;
+    list-style: none;
+    color: #00FFB1;
+    border-color: #00ffff;
+    width: 100%;
+    background-color: #000911;
+    text-align: center;
+}
+
+#id_body{
+    padding: 0;
+    border-style: solid;
+    list-style: none;
+    color: #00FFB1;
+    border-color: #00ffff;
+    width: 100%;
+    background-color: #000911;
+    text-align: center;
+}
+
+.django-ckeditor-widget{
+height: 100%;
+width: 100%;
+
+}
+#id_contenido{
+height: 100%;
+width: 100%;
+background-color: #000911;
+color: #00FFB1;
+border-color: #00ffff;
+
+}
+
+#id_imagen{
+    color: #FF6F00;
+}
+
+/*--------------- crear cuenta --------------------*/
+
+.crear label{
+    color: #FF6F00;
+    white-space: normal;
+}
+
+.crear input{
+    width: 100%;
+    text-align: center;
+    align-items: center;
+    padding: 0px;
+    margin: 0px;
+    border-radius: 100px;
+    outline: none;
+    border-color: #00FFB1;
+}
+
+.crear ul{
+    padding: 0px;
+    margin-top: 10px;
+    list-style: none;
+    color: #00FFB1;
+    width: 100%;
+}
+
+.crear span{
+
+    white-space: pre-line;
+    color: #FF6F00;
+    
+}
+
+/*** Tabla ****/
+.table{
+    color: #00CBFF;
+    background-color: #00CBFF;
+    border-color: #FF6F00;
+}
+
+.table-hover{
+    background-color: #001527   ;
+}

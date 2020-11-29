@@ -1,0 +1,100 @@
+{% extends 'base_generic.html' %}
+
+{% block content %}
+
+<div class="container col-5" style="text-align: center; padding-top: 150px;">
+  <div class="row pb-3 ">
+    <a href="{% url 'listar_analisis' %}" class="rounded-pill btn btn-outline-success col" role="button">  Administrar Analisis   </a>
+    <a href="{% url 'listar_foro' %}" class="rounded-pill btn btn-outline-success col" role="button">  Mis Foros   </a>
+  </div>
+  <i class="color2 col-12 fas fa-file-alt" style="font-size: 50px;"></i>
+  <a href="{% url 'agregar_noticia' %}" class=" rounded-pill col-3 btn btn-outline-primary" style="font-weight: bolder;" role="button">Agregar Noticia</a>
+</div>
+
+<div class="row py-3" style=" justify-content: center;">
+  <div class="col-md-4 py-3 search">
+    <form method="get">
+      <div id="custom-search-input">
+        <div class="input-group col-md-12">
+          <input type="text" class="form-control" placeholder="Buscar Noticias" name="buscar">
+          <span class="input-group-list">
+            <button type="submit" class=" my-0 btn btn-outline-primary"><i class="fas fa-search"></i> Buscar</button>
+          </span>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+<div class="pb-5" style="text-align: center;">
+    <table class="container table-hover table-dark">
+        <thead>
+          <tr class="color4" style="background-color: #00FFB1   ;">
+            <th scope="col" class="color4">Autor</th>
+            <th scope="col" class="color4">Titulo</th>
+            <th scope="col" class="color4">Fecha publicacion</th>
+            <th scope="col" class="color4">Opciones</th>
+          </tr>
+        </thead>
+        <tbody>
+            {% for p in post %}
+            <tr class="color2">
+                <td>{{ p.autor | title }}</td>
+                <td>{{ p.titulo | title }}</td>
+                <td>{{ p.fecha_publicacion | title }}</td>
+                <td>
+                  <div class="container">
+                    <a href="{% url 'modificar_noticia' p.slug %}" class="color4 btn btn-info btn-sm" style="font-weight: bolder;">Modificar</a>
+                    <i class="fas fa-paint-brush"></i>
+                  </div>
+                  {% if perms.noticia.delete_noticia %}
+                    <div class="container">
+                      <a href="{% url 'eliminar_noticia' p.slug %}" class="color4 btn btn-danger btn-sm" style="font-weight: bolder;">Eliminar</a>
+                      <i class="fas fa-skull-crossbones"></i>
+                    </div>
+                  {% endif %}
+                </td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+      <ul class="pagination justify-content-center" style="margin:20px 0">
+        {% if post.has_previous %}
+        <li class="page-item">
+          <a class="btn btn-outline-danger" href="?page={{ post.previous_page_number }}{% if request.GET.buscar %}&buscar={{ request.GET.buscar }}{% endif %}">Anterior</a>
+        </li>
+        {% endif %}
+  
+        {% for i in post.paginator.page_range %}
+          {% if post.number == i %}
+          <li class="page-item">
+            <a class="btn btn-primary col">{{ i }}</a>
+          </li>
+          {% else %}
+          <li class="page-item">
+            <a class="btn btn-outline-primary col" href="?page={{ i }}{% if request.GET.buscar %}&buscar={{ request.GET.buscar }}{% endif %}">{{ i }}</a>
+          </li>
+          {% endif %}
+        {% endfor %}
+  
+        {% if post.has_next %}
+        <li class="page-item">
+          <a class="btn btn-outline-success col" href="?page={{ post.next_page_number }}{% if request.GET.buscar %}&buscar={{ request.GET.buscar }}{% endif %}">Siguiente</a>
+        </li>
+        {% endif %}
+      </ul>
+</div>
+{% endblock %}
+
+
+{% block carrusel %} 
+{% endblock %}
+{% block cajaComentarios %} 
+{% endblock %}
+{% block noticias %}
+{% endblock %}   
+{% block analisisdejuegos %} 
+{% endblock %}
+
+{% block footer %}
+{% endblock %}
