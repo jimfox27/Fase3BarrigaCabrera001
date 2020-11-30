@@ -15,8 +15,7 @@ class AnalisisForm(forms.ModelForm):
 
 class ForoForm(forms.ModelForm):
     tema = forms.CharField()
-    contenido = forms.CharField()
-    
+
     class Meta:
         model = Foro
         fields = ['tema','contenido']
