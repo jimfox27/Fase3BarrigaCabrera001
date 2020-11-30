@@ -13,7 +13,7 @@ from .forms import AnalisisForm
 from .forms import ForoForm
 from .forms import ComentarioForm
 
-# Create your views here.
+
 def index(request):
 
     num_noticias=Post.objects.all().count()
@@ -68,7 +68,7 @@ def noticias(request):
     posts = Post.objects.filter(fecha_publicacion__lte=timezone.now()).order_by('-fecha_publicacion')
     ultimaNoticia = Post.objects.filter(fecha_publicacion__lte=timezone.now()).order_by('-fecha_publicacion')
 
-    paginator = Paginator(posts,10)
+    paginator = Paginator(posts,5)
     page = request.GET.get('page')
     posts = paginator.get_page(page)
 
@@ -84,7 +84,7 @@ def analisis(request):
     postsAnalisis = Analisis.objects.filter(fecha_publicacion__lte=timezone.now()).order_by('-fecha_publicacion')
     ultimoAnalisis = Analisis.objects.filter(fecha_publicacion__lte=timezone.now()).order_by('-fecha_publicacion')
 
-    paginator = Paginator(postsAnalisis,10)
+    paginator = Paginator(postsAnalisis,5)
     pageAnalisis = request.GET.get('page')
     postsAnalisis = paginator.get_page(pageAnalisis)
 
@@ -105,7 +105,7 @@ def foro(request):
             Q(tema__icontains = queruset)
         ).distinct()
 
-    paginator = Paginator(ultimoForo,10)
+    paginator = Paginator(ultimoForo,5)
     page = request.GET.get('page')
     ultimoForo = paginator.get_page(page)
 
